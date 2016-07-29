@@ -8,7 +8,7 @@ watch = false
 gulp.task(
   'build:js',
   () ->
-    entry_point_path = 'src/entry.coffee'
+    entry_point_path = 'src/coffee/main.cjsx'
     distribute_path = 'assets/js/'
     config = require('./webpack.config.coffee')
     if (watch)
