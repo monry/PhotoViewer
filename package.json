@@ -1,0 +1,30 @@
+{
+  "name": "photo-viewer",
+  "version": "1.0.0",
+  "description": "Simple photo viewer for dear Shiori Yukine.",
+  "main": "index.js",
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "modernizr": "^3.3.1",
+    "normalize.css": "^4.2.0",
+    "react": "^15.2.1",
+    "rxjs": "^5.0.0-beta.10"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "webpack-stream": "^3.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monry/PhotoViewer.git"
+  },
+  "author": "Tetsuya Mori",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/monry/PhotoViewer/issues"
+  },
+  "homepage": "https://github.com/monry/PhotoViewer#readme"
+}
