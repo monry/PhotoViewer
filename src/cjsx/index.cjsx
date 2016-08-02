@@ -13,7 +13,7 @@ $(
   () ->
     # Helloコンポーネントを#appにマウント
     ReactDOM.render(
-      <Hello name="React.js!!?" />,
+      <Hello name="React.js" />,
       document.getElementById("container")
     )
 )
