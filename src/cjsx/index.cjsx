@@ -1,3 +1,5 @@
+require('../scss/index.scss')
+
 # 単純に`Hello XX`と出力するだけのコンポーネント
 Hello = React.createClass(
   propTypes:
@@ -11,7 +13,7 @@ $(
   () ->
     # Helloコンポーネントを#appにマウント
     ReactDOM.render(
-      <Hello name="React.js!!" />,
+      <Hello name="React.js!!?" />,
       document.getElementById("container")
     )
 )
