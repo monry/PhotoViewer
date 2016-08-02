@@ -4,12 +4,12 @@ runSequence = require('run-sequence')
 webpack = require('webpack-stream')
 
 watch = false
+distribute_path = 'build/'
 
 gulp.task(
-  'build:js',
+  'build',
   () ->
-    entry_point_path = 'src/coffee/main.cjsx'
-    distribute_path = 'assets/js/'
+    entry_point_path = 'src/entry.coffee'
     config = require('./webpack.config.coffee')
     if (watch)
       config.watch = true
@@ -18,12 +18,12 @@ gulp.task(
     gulp
       .src(entry_point_path)
       .pipe(webpack(config))
-      .pipe(gulp.dest(distribute_path))
+      .pipe(gulp.dest("#{distribute_path}js/"))
 )
 
 gulp.task(
-  'watch:js',
+  'watch',
   (callback) ->
     watch = true
-    runSequence('build:js', callback)
+    runSequence('build', callback)
 )

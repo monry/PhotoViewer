@@ -5,14 +5,15 @@ current = process.cwd()
 
 module.exports =
   output:
-    filename: "main.js"
+    filename: 'main.js'
   resolve:
     extensions: ['', '.cjsx', '.js', '.coffee']
     root: path.join(current, './src')
   module:
     loaders: [
-      { test: /\.cjsx$/, loaders: ["coffee-loader", "cjsx-loader"]}
+      { test: /\.cjsx$/, loaders: ['coffee-loader', 'cjsx-loader']}
       { test: /\.coffee$/, loader: 'coffee-loader' }
+      { test: /\.scss$/, loaders: ['style', 'css', 'sass']}
     ]
   plugins: [
     new webpack.webpack.ProvidePlugin(
