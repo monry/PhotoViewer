@@ -2,9 +2,20 @@
 gulp = require('gulp')
 runSequence = require('run-sequence')
 webpack = require('webpack-stream')
+browserSync = require('browser-sync')
 
 watch = false
 distribute_path = 'build/'
+
+gulp.task(
+  'init:browser-sync',
+  () ->
+    browserSync.init(
+      server:
+        baseDir: 'build/'
+        index: 'index.html'
+    )
+)
 
 gulp.task(
   'build',
@@ -22,8 +33,27 @@ gulp.task(
 )
 
 gulp.task(
-  'watch',
+  'reload-browser',
+  () ->
+    browserSync.reload()
+)
+
+gulp.task(
+  'watch:source',
   (callback) ->
     watch = true
     runSequence('build', callback)
+)
+
+gulp.task(
+  'watch:output',
+  (callback) ->
+    gulp.watch('build/**/*', [ 'reload-browser' ])
+)
+
+gulp.task(
+  'default',
+  (callback) ->
+    runSequence('init:browser-sync', 'watch:output', callback)
+    runSequence('watch:source', callback)
 )
