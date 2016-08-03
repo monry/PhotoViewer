@@ -1,5 +1,6 @@
 // Gulp の設定
 var gulp = require('gulp');
+var watch = require('gulp-watch');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
 var runSequence = require('run-sequence');
@@ -51,7 +52,7 @@ gulp.task(
 gulp.task(
   Const.Task.watch,
   (callback) => {
-    gulp.watch('./src/**/*', [Const.Task.build]);
+    watch(['./src/**/*.js', './src/**/*.scss'], (event) => gulp.start(Const.Task.build));
   }
 );
 
