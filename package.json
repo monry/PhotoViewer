@@ -18,10 +18,6 @@
     "babel-preset-react": "^6.11.1",
     "browser-sync": "^2.14.0",
     "chai": "^3.5.0",
-    "cjsx-loader": "^3.0.0",
-    "coffee-loader": "^0.7.2",
-    "coffee-react": "^5.0.0",
-    "coffee-script": "^1.10.0",
     "css-loader": "^0.23.1",
     "enzyme": "^2.4.1",
     "file-loader": "^0.9.0",
@@ -53,6 +49,8 @@
   },
   "homepage": "https://github.com/monry/PhotoViewer#readme",
   "babel": {
-    "presets": ["es2015"]
+    "presets": [
+      "es2015"
+    ]
   }
 }
