@@ -39,7 +39,7 @@
     "webpack-stream": "^3.2.0"
   },
   "scripts": {
-    "test": "NODE_ENV=test mocha --compilers js:babel-register --require test/_setup.js --recursive $(find test -name '*.spec.js')"
+    "test": "NODE_ENV=test NODE_PATH=src/ mocha --compilers js:babel-register --require test/_setup.js --recursive $(find test -name '*.spec.js')"
   },
   "repository": {
     "type": "git",
