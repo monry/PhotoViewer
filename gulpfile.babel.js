@@ -1,16 +1,25 @@
 // Gulp の設定
 var gulp = require('gulp');
+var plumber = require('gulp-plumber');
+var notify = require('gulp-notify');
 var runSequence = require('run-sequence');
 var webpack = require('webpack-stream');
 var browserSync = require('browser-sync');
 
-var watch = false;
 const distribute_path = 'build/';
 
+const Const = {
+  Task: {
+    build : 'build',
+    bsInit: 'browser-sync:init',
+    watch : 'watch',
+  }
+};
+
 gulp.task(
-  'init:browser-sync',
+  Const.Task.bsInit,
   () => {
-    browserSync.init(
+    return browserSync.init(
       {
         server: {
           baseDir: 'build/',
@@ -22,48 +31,33 @@ gulp.task(
 );
 
 gulp.task(
-  'build',
+  Const.Task.build,
   () => {
     const entry_point_path = 'src/entry.js';
     var config = require('./webpack.config.js');
-    if (watch) {
-      config.watch = true;
-      config.devtool = '#inline-source-map';
-    }
+    config.devtool = 'source-map';
 
-    gulp
+    return gulp
       .src(entry_point_path)
+      .pipe(plumber({
+        errorHandler: notify.onError('<%= error.message %>')
+      }))
       .pipe(webpack(config))
-      .pipe(gulp.dest(`${distribute_path}js/`));
+      .pipe(gulp.dest(`${distribute_path}js/`))
+      .pipe(browserSync.reload({stream: true}));
   }
 );
 
 gulp.task(
-  'reload-browser',
-  () => {
-    browserSync.reload();
-  }
-);
-
-gulp.task(
-  'watch:source',
+  Const.Task.watch,
   (callback) => {
-    watch = true;
-    runSequence('build', callback);
-  }
-);
-
-gulp.task(
-  'watch:output',
-  (callback) => {
-    gulp.watch('build/**/*', [ 'reload-browser' ]);
+    gulp.watch('./src/**/*', [Const.Task.build]);
   }
 );
 
 gulp.task(
   'default',
   (callback) => {
-    runSequence('init:browser-sync', 'watch:output', callback);
-    runSequence('watch:source', callback);
+    runSequence(Const.Task.bsInit, Const.Task.watch, callback);
   }
 );
