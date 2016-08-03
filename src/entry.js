@@ -6,7 +6,7 @@ import Root from './js/views/index/_root';
 
 $(
   () => {
-    // Helloコンポーネントを#appにマウント
+    // Rootコンポーネントを#containerにマウント
     ReactDOM.render(
       <Root/>,
       $('#container').get(0)
