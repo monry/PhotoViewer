@@ -19,6 +19,11 @@ body {
   background-color: #ffffff;
 }
 
+p {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+}
+
 #container {
   width: 100%;
   height: 100%;
