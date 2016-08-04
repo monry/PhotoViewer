@@ -4,7 +4,9 @@
   "description": "Simple photo viewer for dear Shiori Yukine.",
   "main": "index.js",
   "dependencies": {
+    "classnames": "^2.2.5",
     "jquery": "^3.1.0",
+    "keycode": "^2.1.4",
     "modernizr": "^3.3.1",
     "normalize.css": "^4.2.0",
     "react": "^15.3.0",
