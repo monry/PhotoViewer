@@ -2,14 +2,10 @@
 require('file?name=../[name].[ext]!./html/index.html');
 require('./scss/index.scss');
 
-import Root from './js/views/index/_root';
+// ココが凄く微妙…。
+global.Observable = Rx.Observable;
 
-$(
-  () => {
-    // Rootコンポーネントを#containerにマウント
-    ReactDOM.render(
-      <Root/>,
-      $('#container').get(0)
-    );
-  }
-);
+import Index from 'js/controllers/index';
+var index = new Index();
+index.renderView();
+
