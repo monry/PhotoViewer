@@ -59,6 +59,6 @@ gulp.task(
 gulp.task(
   'default',
   (callback) => {
-    runSequence(Const.Task.bsInit, Const.Task.watch, callback);
+    runSequence(Const.Task.bsInit, Const.Task.build, Const.Task.watch, callback);
   }
 );
