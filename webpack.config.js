@@ -23,6 +23,7 @@ module.exports = {
         $: 'jquery',
         React: 'react',
         ReactDOM: 'react-dom',
+        Rx: 'rx',
       }
     )
   ],
