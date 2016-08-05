@@ -1,4 +1,5 @@
 // Gulp の設定
+/** @var {Gulp} gulp */
 var gulp = require('gulp');
 var watch = require('gulp-watch');
 var plumber = require('gulp-plumber');
