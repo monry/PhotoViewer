@@ -18,6 +18,7 @@ const Const = {
     watchJS : 'watch-js',
     watchCSS: 'watch-css',
     bsInit  : 'browser-sync:init',
+    bsReload: 'browser-sync:reload',
   }
 };
 
@@ -29,9 +30,16 @@ gulp.task(
         server: {
           baseDir: 'build/',
           index: 'index.html',
-        }
+        },
       }
     );
+  }
+);
+
+gulp.task(
+  Const.Task.bsReload,
+  () => {
+    browserSync.reload();
   }
 );
 
@@ -48,8 +56,7 @@ gulp.task(
         errorHandler: notify.onError('<%= error.message %>')
       }))
       .pipe(webpack(config))
-      .pipe(gulp.dest(`${distribute_path}js/`))
-      .pipe(browserSync.reload({stream: true}));
+      .pipe(gulp.dest(`${distribute_path}js/`));
   }
 );
 
@@ -64,33 +71,50 @@ gulp.task(
       .pipe(plumber({
         errorHandler: notify.onError('<%= error.message %>')
       }))
-      .pipe(compass(config))
-      .pipe(browserSync.reload({stream: true}));
+      .pipe(compass(config));
   }
 );
 
 gulp.task(
   Const.Task.watchJS,
-  (callback) => {
-    watch('./src/**/*.js', (event) => gulp.start(Const.Task.buildJS));
+  (done) => {
+    watch(
+      './src/**/*.js',
+      (event) => {
+        runSequence(
+          Const.Task.buildJS,
+          Const.Task.bsReload,
+          done
+        );
+      }
+    );
   }
 );
 
 gulp.task(
   Const.Task.watchCSS,
-  (callback) => {
-    watch('./src/**/*.scss', (event) => gulp.start(Const.Task.buildCSS));
+  (done) => {
+    watch(
+      './src/**/*.scss',
+      (event) => {
+        runSequence(
+          Const.Task.buildCSS,
+          Const.Task.bsReload,
+          done
+        );
+      }
+    );
   }
 );
 
 gulp.task(
   'default',
-  (callback) => {
+  (done) => {
     runSequence(
       Const.Task.bsInit,
       [ Const.Task.buildJS, Const.Task.buildCSS ],
       [ Const.Task.watchJS, Const.Task.watchCSS ],
-      callback
+      done
     );
   }
 );
