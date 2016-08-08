@@ -5,7 +5,7 @@ var current = process.cwd();
 
 module.exports = {
   output: {
-    filename: 'main.js',
+    filename: 'index.js',
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
