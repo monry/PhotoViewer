@@ -1,5 +1,7 @@
+@import "compass/css3";
 @import "~sanitize.css/sanitize.css";
 @import "reset_browser_style";
+@import "ceaser-easing";
 
 html {
   width: 100%;
@@ -50,10 +52,12 @@ body {
 
       &.show {
         bottom: -5%;
+        @include ceaser-transition(bottom, 500ms, $easeOutBack);
       }
 
       &.hide {
         bottom: -20%;
+        @include ceaser-transition(bottom, 250ms, $ease-out);
       }
     }
   }
