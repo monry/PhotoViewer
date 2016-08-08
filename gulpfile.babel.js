@@ -25,7 +25,7 @@ const Const = {
 gulp.task(
   Const.Task.bsInit,
   () => {
-    return browserSync.init(
+    browserSync.init(
       {
         server: {
           baseDir: 'build/',
@@ -83,8 +83,7 @@ gulp.task(
       (event) => {
         runSequence(
           Const.Task.buildJS,
-          Const.Task.bsReload,
-          done
+          Const.Task.bsReload
         );
       }
     );
@@ -99,8 +98,7 @@ gulp.task(
       (event) => {
         runSequence(
           Const.Task.buildCSS,
-          Const.Task.bsReload,
-          done
+          Const.Task.bsReload
         );
       }
     );
