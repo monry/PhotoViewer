@@ -27,9 +27,9 @@ export default class Top extends React.Component {
   }
 
   componentDidMount() {
-    const onKeyUp = Observable.fromEvent(window, 'keyup')
+    const onKeyUp = Rx.Observable.fromEvent(window, 'keyup')
       .where((event) => 0 <= ACCEPT_KEYS.indexOf(keycode(event)))
-      .map((event) => keycode(event))
+      .map((event, index, source) => keycode(event))
       .publish();
     this._onKeyUp = {
       'left' : onKeyUp.where((key) => 'left'  == key).subscribe(
