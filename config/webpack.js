@@ -9,7 +9,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
-    root: path.join(current, './src'),
+    root: path.join(current, 'src'),
   },
   module: {
     loaders: [
