@@ -1,9 +1,9 @@
-import Root from 'js/views/index/_root';
+import Root from 'js/views/index';
 import Top from 'js/views/index/top';
 import Bottom from 'js/views/index/bottom';
 
 describe(
-  '<Root />',
+  '<Index />',
   () => {
     it(
       'has div#content',
