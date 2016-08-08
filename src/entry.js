@@ -2,6 +2,8 @@
 require('file?name=../[name].[ext]!./html/index.html');
 require('js/utilities/extensions.js');
 
+global.Const = {};
+
 import Index from 'js/controllers/index';
 var index = new Index();
 index.renderView();
