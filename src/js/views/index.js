@@ -1,8 +1,8 @@
-import Top from './top';
-import Bottom from './bottom';
+import Top from './index/top';
+import Bottom from './index/bottom';
 var keycode = require('keycode');
 
-export default class Root extends React.Component {
+export default class Index extends React.Component {
 
   constructor(props) {
     super(props);
@@ -18,7 +18,7 @@ export default class Root extends React.Component {
   }
 
   componentDidMount() {
-    this._onKeyUp = Observable.fromEvent(window, 'keyup')
+    this._onKeyUp = Rx.Observable.fromEvent(window, 'keyup')
       .where((event) => 'esc' == keycode(event))
       .subscribe(
         (event) => {

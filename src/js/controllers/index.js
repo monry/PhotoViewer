@@ -1,4 +1,4 @@
-import Root from 'js/views/index/_root';
+import Root from 'js/views/index';
 
 export default class Index {
 
