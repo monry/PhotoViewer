@@ -1,6 +1,6 @@
 import Top from './index/top';
 import Bottom from './index/bottom';
-var keycode = require('keycode');
+const keycode = require('keycode');
 
 export default class Index extends React.Component {
 
@@ -11,24 +11,31 @@ export default class Index extends React.Component {
   render() {
     return (
       <div id="content">
-        <Top/>
-        <Bottom/>
+        <Top ref="top" />
+        <Bottom ref="bottom" />
       </div>
     );
   }
 
   componentDidMount() {
-    this._onKeyUp = Rx.Observable.fromEvent(window, 'keyup')
-      .where((event) => 'esc' == keycode(event))
-      .subscribe(
-        (event) => {
-          console.log('back-to-top');
-        }
-      );
+    const onKeyUp = Rx.Observable.fromEvent(window, 'keyup').share();
+    this._keyboardEvents = {
+      up  : onKeyUp.where((event) => 'up'   == keycode(event)).subscribe((event) => { this.refs.bottom.hide(); }),
+      down: onKeyUp.where((event) => 'down' == keycode(event)).subscribe((event) => { this.refs.bottom.show(); }),
+      esc : onKeyUp.where((event) => 'esc'  == keycode(event)).subscribe((event) => { this._quit(); }),
+    };
   }
 
   componentWillUnmount() {
-    this._onKeyUp.dispose();
+    this._keyboardEvents.forEach(
+      (keyboardEvent) => {
+        keyboardEvent.dispose();
+      }
+    );
+  }
+
+  _quit() {
+    location.href = $('#container').attr('data-return-path');
   }
 
 }
