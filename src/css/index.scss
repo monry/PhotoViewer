@@ -47,6 +47,14 @@ body {
       background-color: #ffff00;
       opacity: 0.5;
       color: #000000;
+
+      &.show {
+        bottom: -5%;
+      }
+
+      &.hide {
+        bottom: -20%;
+      }
     }
   }
 }
