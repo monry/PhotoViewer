@@ -1,3 +1,5 @@
+import Thumbnails from './bottom/thumbnails';
+
 export default class Bottom extends React.Component {
   constructor(props) {
     super(props);
@@ -5,7 +7,9 @@ export default class Bottom extends React.Component {
 
   render() {
     return (
-      <div id="bottom">Bottom</div>
+      <div id="bottom">
+        <Thumbnails />
+      </div>
     );
   }
 }
