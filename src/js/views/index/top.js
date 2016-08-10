@@ -1,5 +1,5 @@
 import Buttons from './top/buttons';
-import Photo from './top/photo';
+import Photos from './top/photos';
 
 var keycode = require('keycode');
 var classNames = require('classnames');
@@ -19,7 +19,7 @@ export default class Top extends React.Component {
     return (
       <div id="top" className={this._getClassNames()}>
         <Buttons />
-        <Photo />
+        <Photos />
       </div>
     );
   }

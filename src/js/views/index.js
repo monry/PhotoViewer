@@ -18,7 +18,7 @@ export default class Index extends React.Component {
   }
 
   componentDidMount() {
-    const onKeyUp = Rx.Observable.fromEvent(window, 'keyup').share();
+    const onKeyUp = Rx.Observable.fromEvent(window, 'keyup').where((_) => !controller.moving).share();
     this._keyboardEvents = {
       up   : onKeyUp.where((event) => 'up'    == keycode(event)).subscribe((event) => { this.refs.bottom.hide(); }),
       down : onKeyUp.where((event) => 'down'  == keycode(event)).subscribe((event) => { this.refs.bottom.show(); }),

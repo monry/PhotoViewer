@@ -6,8 +6,19 @@ export default class Index {
    * コンストラクタ
    */
   constructor() {
-    console.log("Controller Index initialized!");
     this.selectionIndex = new Rx.ReactiveProperty(0);
+    this.moving = false;
+    this.selectionIndex.asObservable().subscribe(
+      (_) => {
+        this.moving = true;
+        setTimeout(
+          () => {
+            this.moving = false;
+          },
+          500
+        );
+      }
+    );
   }
 
   /**
