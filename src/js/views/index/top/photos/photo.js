@@ -51,8 +51,7 @@ export default class Photo extends React.Component {
   }
 
   _getImagePath() {
-    return `./img/photo-${this.props.index % 2 == 1 ? 'vertical' : 'horizontal'}.png`;
-    //return `${Const.Image.directory.photo}${(this.props.index + 1).zerofill(3)}.${Const.Image.extension}`;
+    return `${Const.Image.directory.photo}${(this.props.index + 1).zerofill(3)}.${Const.Image.extension}`;
   }
 
   _getAlternativeText() {

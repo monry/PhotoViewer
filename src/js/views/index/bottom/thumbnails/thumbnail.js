@@ -45,8 +45,7 @@ export default class Thumbnail extends React.Component {
   }
 
   _getImagePath() {
-    return `./img/thumbnail-${this.props.index % 2 == 1 ? 'vertical' : 'horizontal'}.png`;
-    //return `${Const.Image.directory.thumbnail}${(this.props.index + 1).zerofill(3)}.${Const.Image.extension}`;
+    return `${Const.Image.directory.thumbnail}${(this.props.index + 1).zerofill(3)}.${Const.Image.extension}`;
   }
 
   _getAlternativeText() {
