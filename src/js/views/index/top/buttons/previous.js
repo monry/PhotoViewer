@@ -4,6 +4,9 @@ export default class Previous extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      enabled: controller.selectionIndex.value > 0,
+    };
   }
 
   render() {
@@ -12,13 +15,31 @@ export default class Previous extends React.Component {
     );
   }
 
+  componentDidMount() {
+    this.$().clickAsObservable().subscribe(
+      (event) => {
+        controller.previous();
+      }
+    );
+    controller.selectionIndex.asObservable().subscribe(
+      (value) => {
+        this.setState({ enabled: value > 0 });
+      }
+    )
+  }
+
+  componentWillUnmount() {
+  }
+
   _getClassNames() {
     return classNames(
       [
         'move',
         'previous'
       ],
-      {}
+      {
+        'disabled': !this.state.enabled,
+      }
     );
   }
 

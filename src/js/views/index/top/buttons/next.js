@@ -4,6 +4,9 @@ export default class Next extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      enabled: controller.selectionIndex.value < Const.Image.count,
+    };
   }
 
   render() {
@@ -12,13 +15,31 @@ export default class Next extends React.Component {
     );
   }
 
+  componentDidMount() {
+    this.$().clickAsObservable().subscribe(
+      (event) => {
+        controller.next();
+      }
+    );
+    controller.selectionIndex.asObservable().subscribe(
+      (value) => {
+        this.setState({ enabled: value < Const.Image.count });
+      }
+    )
+  }
+
+  componentWillUnmount() {
+  }
+
   _getClassNames() {
     return classNames(
       [
         'move',
         'next',
       ],
-      {}
+      {
+        'disabled': !this.state.enabled,
+      }
     );
   }
 

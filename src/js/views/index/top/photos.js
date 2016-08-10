@@ -19,9 +19,7 @@ export default class Photos extends React.Component {
   render() {
     return (
       <div className={this._getClassNames()}>
-        <Photo index={this.state.index - 1} />
         <Photo index={this.state.index} />
-        <Photo index={this.state.index + 1} />
       </div>
     );
   }

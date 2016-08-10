@@ -18,8 +18,8 @@ export default class Top extends React.Component {
   render() {
     return (
       <div id="top" className={this._getClassNames()}>
-        <Buttons />
         <Photos />
+        <Buttons />
       </div>
     );
   }
