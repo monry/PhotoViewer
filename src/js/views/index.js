@@ -20,9 +20,11 @@ export default class Index extends React.Component {
   componentDidMount() {
     const onKeyUp = Rx.Observable.fromEvent(window, 'keyup').share();
     this._keyboardEvents = {
-      up  : onKeyUp.where((event) => 'up'   == keycode(event)).subscribe((event) => { this.refs.bottom.hide(); }),
-      down: onKeyUp.where((event) => 'down' == keycode(event)).subscribe((event) => { this.refs.bottom.show(); }),
-      esc : onKeyUp.where((event) => 'esc'  == keycode(event)).subscribe((event) => { this._quit(); }),
+      up   : onKeyUp.where((event) => 'up'    == keycode(event)).subscribe((event) => { this.refs.bottom.hide(); }),
+      down : onKeyUp.where((event) => 'down'  == keycode(event)).subscribe((event) => { this.refs.bottom.show(); }),
+      left : onKeyUp.where((event) => 'left'  == keycode(event)).subscribe((event) => { controller.previous(); }),
+      right: onKeyUp.where((event) => 'right' == keycode(event)).subscribe((event) => { controller.next(); }),
+      esc  : onKeyUp.where((event) => 'esc'   == keycode(event)).subscribe((event) => { this._quit(); }),
     };
   }
 

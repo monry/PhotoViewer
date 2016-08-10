@@ -19,7 +19,7 @@ export default class Thumbnail extends React.Component {
       .clickAsObservable()
       .subscribe(
         (event) => {
-          this.props._setSelectionIndex(this.props.index);
+          controller.jump(this.props.index);
         }
       );
   }

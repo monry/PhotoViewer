@@ -8,13 +8,14 @@ export default class Next extends React.Component {
 
   render() {
     return (
-      <p className={this._getClassNames()}>Next</p>
+      <p className={this._getClassNames()}><span>&#x25b6;</span></p>
     );
   }
 
   _getClassNames() {
     return classNames(
       [
+        'move',
         'next',
       ],
       {}

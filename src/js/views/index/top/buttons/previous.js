@@ -8,13 +8,14 @@ export default class Previous extends React.Component {
 
   render() {
     return (
-      <p className={this._getClassNames()}>Previous</p>
+      <p className={this._getClassNames()}><span>&#x25c0;</span></p>
     );
   }
 
   _getClassNames() {
     return classNames(
       [
+        'move',
         'previous'
       ],
       {}

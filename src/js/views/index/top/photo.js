@@ -29,12 +29,11 @@ export default class Photo extends React.Component {
   }
 
   _renderImage(className, index) {
-    console.log(className, index);
     if (0 > index || index >= Const.Image.count) {
       return;
     }
     return (
-      <p className={className}><img src={this._getImagePath(index)} alt={this._getAlternativeText()} /></p>
+      <p className={className}><img src={this._getImagePath(index)} alt={this._getAlternativeText(index)} /></p>
     );
   }
 
@@ -52,8 +51,8 @@ export default class Photo extends React.Component {
     //return `${Const.Image.directory.photo}${(index + 1).zerofill(3)}.${Const.Image.extension}`;
   }
 
-  _getAlternativeText() {
-    return "";
+  _getAlternativeText(index) {
+    return `Photo ${index}`;
   }
 
 }
