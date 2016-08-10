@@ -26,6 +26,24 @@ export default class Bottom extends React.Component {
     this.setState({ visibility: false });
   }
 
+  componentDidMount() {
+    this._onMouseOver = this.$().mouseoverAsObservable().subscribe(
+      (event) => {
+        this.show();
+      }
+    );
+    this._onMouseOut = this.$().mouseoutAsObservable().subscribe(
+      (event) => {
+        this.hide();
+      }
+    );
+  }
+
+  componentWillUnmount() {
+    this._onMouseOver.dispose();
+    this._onMouseOut.dispose();
+  }
+
   _getClassNames() {
     return classNames(
       [],
