@@ -41,6 +41,10 @@ export default class Index {
         photo    : $container.attr('data-image-directory-photo'),
         thumbnail: $container.attr('data-image-directory-thumbnail'),
       },
+      aspectRatio: {
+        x: parseInt($container.attr('data-image-aspect-ratio-x')),
+        y: parseInt($container.attr('data-image-aspect-ratio-y')),
+      }
     };
   }
 
