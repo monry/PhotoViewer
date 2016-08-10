@@ -14,10 +14,26 @@ export default class Thumbnail extends React.Component {
     );
   }
 
+  componentDidMount() {
+    this._onClick = Rx.Observable
+      .fromEvent(ReactDOM.findDOMNode(this), 'click')
+      .subscribe(
+        (event) => {
+          this.props._setSelectionIndex(this.props.index);
+        }
+      );
+  }
+
+  componentWillUnmount() {
+    this._onClick.dispose();
+  }
+
   _getClassNames() {
     return classNames(
       [],
-      {}
+      {
+        'selected': this.props.selectionIndex == this.props.index,
+      }
     );
   }
 
