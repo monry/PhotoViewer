@@ -29,3 +29,16 @@ Number.prototype.zerofill = function(digit) {
   }
   return sign + real + decimal;
 };
+
+/**
+ * React Component が持つ DOM の jQuery オブジェクトを返す
+ *
+ * @param {string} selector セレクタ (未指定の場合は自身の jQuery オブジェクトを返す)
+ * @returns {jQuery} 検索した jQuery オブジェクト
+ */
+React.Component.prototype.$ = function(selector = '') {
+  if (selector) {
+    return $(ReactDOM.findDOMNode(this)).find(selector);
+  }
+  return $(ReactDOM.findDOMNode(this));
+};
