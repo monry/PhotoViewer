@@ -182,3 +182,11 @@ body {
     }
   }
 }
+
+.sample {
+  
+}
+
+.sample-appear {
+  @include opacity(1);
+}

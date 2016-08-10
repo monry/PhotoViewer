@@ -1,4 +1,5 @@
 var classNames = require('classnames');
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export default class Photo extends React.Component {
 
@@ -11,7 +12,9 @@ export default class Photo extends React.Component {
       return null;
     }
     return (
-      <p className={this._getClassNames()} style={this._getStyle()}><img src={this._getImagePath()} alt={this._getAlternativeText()} /></p>
+      <ReactCSSTransitionGroup transitionName="sample" transitionAppear={true} transitionAppearTimeout={500} transitionEnter={true} transitionEnterTimeout={500} transitionLeave={true} transitionLeaveTimeout={500}>
+        <p className={this._getClassNames()} style={this._getStyle()}><img src={this._getImagePath()} alt={this._getAlternativeText()} /></p>
+      </ReactCSSTransitionGroup>
     );
   }
 

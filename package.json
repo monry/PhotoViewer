@@ -10,6 +10,7 @@
     "keycode": "^2.1.4",
     "modernizr": "^3.3.1",
     "react": "^15.3.0",
+    "react-addons-css-transition-group": "^15.3.0",
     "react-dom": "^15.2.1",
     "rx": "^4.1.0",
     "rx-jquery": "^1.1.7",
