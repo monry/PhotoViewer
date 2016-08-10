@@ -9,7 +9,7 @@ var runSequence = require('run-sequence');
 var webpack = require('webpack-stream');
 var browserSync = require('browser-sync');
 
-const distribute_path = 'build/';
+const distribute_path = 'build/PhotoViewer/';
 
 const Const = {
   Task: {
@@ -28,7 +28,7 @@ gulp.task(
     browserSync.init(
       {
         server: {
-          baseDir: 'build/',
+          baseDir: 'build/PhotoViewer/',
           index: 'index.html',
         },
       }
