@@ -8,15 +8,15 @@ export default class Thumbnail extends React.Component {
 
   render() {
     return (
-      <li className={this._getClassNames()} data-index={this.props.index}>
+      <li className={this._getClassNames()} style={this._getStyle()} data-index={this.props.index}>
         <p><img src={this._getImagePath()} alt={this._getAlternativeText()} /></p>
       </li>
     );
   }
 
   componentDidMount() {
-    this._onClick = Rx.Observable
-      .fromEvent(ReactDOM.findDOMNode(this), 'click')
+    this._onClick = this.$()
+      .clickAsObservable()
       .subscribe(
         (event) => {
           this.props._setSelectionIndex(this.props.index);
@@ -35,6 +35,13 @@ export default class Thumbnail extends React.Component {
         'selected': this.props.selectionIndex == this.props.index,
       }
     );
+  }
+
+  _getStyle() {
+    return {
+      width: ($(document).height() * 0.3 * 0.5) * Const.Image.aspectRatio.x / Const.Image.aspectRatio.y,
+      height: ($(document).height() * 0.3 * 0.5),
+    };
   }
 
   _getImagePath() {

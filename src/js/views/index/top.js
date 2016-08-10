@@ -1,4 +1,5 @@
 import Buttons from './top/buttons';
+import Photo from './top/photo';
 
 var keycode = require('keycode');
 var classNames = require('classnames');
@@ -12,58 +13,27 @@ export default class Top extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      isHoge: false,
-      isFuga: false,
-    };
   }
 
   render() {
     return (
       <div id="top" className={this._getClassNames()}>
         <Buttons />
+        <Photo />
       </div>
     );
   }
 
   componentDidMount() {
-    const onKeyUp = Rx.Observable.fromEvent(window, 'keyup')
-      .where((event) => 0 <= ACCEPT_KEYS.indexOf(keycode(event)))
-      .select((event, index, source) => keycode(event))
-      .publish();
-    this._onKeyUp = {
-      'left' : onKeyUp.where((key) => 'left'  == key).subscribe(
-        (_) => {
-          this.setState({ isHoge: !this.state.isHoge });
-        }
-      ),
-      'right': onKeyUp.where((key) => 'right' == key).subscribe(
-        (_) => {
-          this.setState({ isFuga: !this.state.isFuga });
-        }
-      ),
-    };
-    onKeyUp.connect();
   }
 
   componentWillUnmount() {
-    Object.keys(this._onKeyUp).forEach(
-      (key) => {
-        this._onKeyUp[key].dispose();
-      }
-    );
   }
 
   _getClassNames() {
     return classNames(
-      [
-        'original',
-        'piyo',
-      ],
-      {
-        'hoge': this.state.isHoge,
-        'fuga': this.state.isHoge && this.state.isFuga,
-      }
+      [],
+      {}
     )
   }
 

@@ -7,6 +7,7 @@ export default class Index {
    */
   constructor() {
     console.log("Controller Index initialized!");
+    this.selectionIndex = new Rx.ReactiveProperty(0);
   }
 
   /**

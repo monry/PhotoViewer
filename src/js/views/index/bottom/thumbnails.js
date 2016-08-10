@@ -42,7 +42,9 @@ export default class Thumbnails extends React.Component {
     } else if (Const.Image.count <= selectionIndex) {
       selectionIndex = 0;
     }
+    controller.selectionIndex.value = selectionIndex;
     this.setState({ selectionIndex: selectionIndex });
+    //noinspection JSUnresolvedFunction
     $('div#bottom')
       .scrollTo(
         `li:eq(${this.state.selectionIndex})`,
